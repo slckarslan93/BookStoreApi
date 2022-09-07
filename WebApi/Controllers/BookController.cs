@@ -70,10 +70,10 @@ namespace WebApi.Controllers
             {
                 return BadRequest();
             }
-            //book.GenreId = updatedbook.GenreId != default ? updatedbook.GenreId : book.GenreId;
-            //book.PageCount = updatedbook.PageCount != default ? updatedbook.PageCount : book.PageCount;
-            //book.PublishDate = updatedbook.PublishDate != default ? updatedbook.PublishDate : book.PublishDate;
-            //book.Title = updatedbook.Title != default ? updatedbook.Title : book.Title;
+            book.GenreId = updatedbook.GenreId != default ? updatedbook.GenreId : book.GenreId;
+            book.PageCount = updatedbook.PageCount != default ? updatedbook.PageCount : book.PageCount;
+            book.PublishDate = updatedbook.PublishDate != default ? updatedbook.PublishDate : book.PublishDate;
+            book.Title = updatedbook.Title != default ? updatedbook.Title : book.Title;
 
             _context.Update(book);
             _context.SaveChanges();
