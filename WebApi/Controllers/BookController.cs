@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi.BookOperations.CreateBooks;
 using WebApi.BookOperations.DeleteBook;
@@ -17,10 +18,13 @@ namespace WebApi.Controllers
     public class BookController : Controller
     {
         private readonly BookStoreDbContext _context;
+        private readonly IMapper _mapper;
 
-        public BookController(BookStoreDbContext context)
+
+        public BookController(BookStoreDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -64,7 +68,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public IActionResult AddBook([FromBody] CreateBookModel newBook)
         {
-            CreateBookCommand command = new CreateBookCommand(_context);
+            CreateBookCommand command = new CreateBookCommand(_context,_mapper);
             try
             {
                 command.Model = newBook;
