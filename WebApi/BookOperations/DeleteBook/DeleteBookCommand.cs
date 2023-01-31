@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebApi.DBOperations;
+﻿using WebApi.DBOperations;
 using WebApi.Entities;
 
 namespace WebApi.BookOperations.DeleteBook
@@ -8,6 +7,7 @@ namespace WebApi.BookOperations.DeleteBook
     {
         private readonly BookStoreDbContext _dbContext;
         public int BookId { get; set; }
+
         public DeleteBookCommand(BookStoreDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -21,7 +21,7 @@ namespace WebApi.BookOperations.DeleteBook
             {
                 throw new InvalidOperationException("Silinecek veri bulunamadı");
             }
-           
+
             _dbContext.Remove(book);
             _dbContext.SaveChanges();
         }

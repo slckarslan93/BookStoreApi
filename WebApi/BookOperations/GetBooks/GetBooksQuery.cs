@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using WebApi.Common;
 using WebApi.DBOperations;
 using WebApi.Entities;
 
@@ -15,6 +14,7 @@ namespace WebApi.BookOperations.GetBooks
             _dbContext = dbContext;
             _mapper = mapper;
         }
+
         public List<BookViewModel> Handle()
         {
             var bookList = _dbContext.Books.OrderBy(x => x.Id).ToList<Book>();
@@ -31,7 +31,6 @@ namespace WebApi.BookOperations.GetBooks
             //}
             return vm;
         }
-
     }
 
     public class BookViewModel
@@ -42,4 +41,3 @@ namespace WebApi.BookOperations.GetBooks
         public string Genre { get; set; }
     }
 }
-

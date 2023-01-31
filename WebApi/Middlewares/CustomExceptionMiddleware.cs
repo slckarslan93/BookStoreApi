@@ -3,6 +3,7 @@
     public class CustomExceptionMiddleware
     {
         private readonly RequestDelegate next;
+
         public CustomExceptionMiddleware(RequestDelegate next)
         {
             this.next = next;
@@ -14,9 +15,8 @@
             Console.WriteLine(message);
             await next(context);
         }
-
-
     }
+
     public static class CustomExceptionMiddlewareExtension
     {
         public static IApplicationBuilder UseCustomExceptionMiddleware(this IApplicationBuilder builder)
